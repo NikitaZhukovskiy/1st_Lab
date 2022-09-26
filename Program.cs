@@ -206,9 +206,9 @@ namespace _1stLab
             Console.WriteLine(" ");
             Console.WriteLine($"_LEVEL_3_\n");
 
-            double s1, a1, x1, y1;
+            double s1, a1, x1, y1, dobavka;
             double znak;
-            znak = 1;
+            znak = -1;
 
             Console.WriteLine($"Task 1 (lvl_3):");
 
@@ -217,20 +217,17 @@ namespace _1stLab
 
                 s1 = 1;
                 a1 = 1;
-                znak = -1;
+                fact = 1;
+                dobavka = 0;
 
                 for (int i = 1; Math.Abs(a1) > 0.0001; i++)
                 {
-                    znak = -znak;
-                    fact = 2;
+                    fact *= (i + dobavka) * (i + dobavka + 1);
 
-                    if (2 * i > 2)
-                    {
-                        fact *= (2 * i) * (2 * i - 1);
-                    }
-                    a1 = znak * Math.Pow(x1, 2 * i) / (fact);
+                    a1 = Math.Pow(znak, i) * Math.Pow(x1, 2 * i) / (fact);
                     s1 = s1 + a1;
 
+                    dobavka += 1;
                 }
                 y1 = Math.Cos(x1);
 
@@ -254,10 +251,7 @@ namespace _1stLab
                 fact = 1;
                 for (int i = 1; Math.Abs(a8) > 0.0001; i += 1)
                 {
-                    if (i > 1)
-                    {
-                        fact *= i * (i - 1);
-                    }
+                    fact *= i;
                     a8 = Math.Pow(2 * x8, i) / (fact);
                     s8 += a8;
                 }
@@ -269,6 +263,7 @@ namespace _1stLab
             Console.WriteLine();
 
             #endregion
+
 
         }
     }
